@@ -8,7 +8,7 @@ function App() {
   const [map, setMap] = useState("");
 
   function handleSearch(event) {
-    //console.log("location found")
+    console.log("location found");
     setsearchQuery(event.target.value);
     console.log(searchQuery);
   }
