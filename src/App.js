@@ -17,7 +17,7 @@ function App() {
     try {
       event.preventDefault();
       event.target.input.value = "";
-      const API = `GET https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=SEARCH_STRING&format=json`;
+      const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
       console.log(API);
       const res = await axios.get(API);
       setlocation(res.data[0]);
@@ -26,7 +26,7 @@ function App() {
       console.log(error);
     }
   }
-  function handleMapData(data) {
+  function handleMap(data) {
     const API = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${data.lat},${data.lon}&zoom=9`;
     setMap(API);
   }
@@ -44,6 +44,8 @@ function App() {
           Explore
         </button>
       </form>
+      <p>{location.display_name}</p>
+      {map && <img src={map} alt="map" />}
     </div>
   );
 }
