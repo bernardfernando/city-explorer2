@@ -4,7 +4,7 @@ import axios from "axios";
 
 function App() {
   const [searchQuery, setsearchQuery] = useState("");
-  const [location, setlocation] = useState({});
+  const [location, setLocation] = useState({});
   const [map, setMap] = useState("");
 
   function handleSearch(event) {
@@ -20,7 +20,7 @@ function App() {
       const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
       console.log(API);
       const res = await axios.get(API);
-      setlocation(res.data[0]);
+      setLocation(res.data[0]);
       handleMap(res.data[0]);
     } catch (error) {
       console.log(error);
